@@ -8,7 +8,7 @@ We will use terraform for resource deployments.
 Terraform will deploy all the resources required, including two Vms, one will run Jenkins on a Docker container, and the other will run the Docker agent container.
 Both Vms have script extensions that will run upon Vm creation.
 
-- Steps
+### Steps
 
 After deploying the resources, proceed with the basic jenkins installation on the master Vm. You will need to install the Docker plugin
 
@@ -28,45 +28,41 @@ modify the current line:
 
 - Restart docker services:
 
-`<?systemctl daemon-reload
+`systemctl daemon-reload`
 
-systemctl restart docker?>`
+`systemctl restart docker`
 
-You can test the connection on the agent machine:
+you can test the connection on the agent machine:
 
-curl http://<agentvmip>:4243/version
+`curl http://<agentvmip>:4243/version`
 
-3.
-Procede with the configuration on jenkins:
+- Procede with the configuration on jenkins:
 
 Manage Jenkins > Clouds, add a new cloud of type docker;
 
 On the docker host url, insert the agent vm url as follows: 
 
-tcp://<agentvmIp>:4243
+`tcp://<agentvmIp>:4243`
 
 Test the connection and enable it, also expose DOCKER_HOST;
 
-Set the container cap;
+- Set the container cap;
 
-Set the "Remote File system Root" as /home/ubuntu
+- Set the "Remote File system Root" as /home/ubuntu
 
-Add a docker template and enable it, on the docker image option set the image you want to use, in our case we will use a custom docker image:
+- Add a docker template and enable it, on the docker image option set the image you want to use, in our case we will use a custom docker image:
 
-nokorinotsubasa/agent175:v5
+`nokorinotsubasa/agent175:v5`
 
-Set a label as you please. In this example we will use 'docker-agent'
+- Set a label as you please. In this example we will use 'docker-agent'
 
-On the connect method option choose connect with ssh;
+- On the connect method option choose connect with ssh;
 
-On credential, create an "Username and password" type of credentials(jenkins:jenkins);
+- On credential, create an "Username and password" type of credentials(jenkins:jenkins);
 
-On Host key Verification Strategy, choose "Non verifying Verification Strategy"; 
+- On Host key Verification Strategy, choose "Non verifying Verification Strategy"; 
 
-4.
-
-That's it, now on the pipeline configuration, set the "Restrict where this build can run" to the name of the label you defined on the docker template configuration.
-
+- That's it, now on the pipeline configuration, set the "Restrict where this build can run" to the name of the label you defined on the docker template configuration.
 In case of a script, set as:
 
-agent {label 'label'}
+`agent {label 'label'}`
