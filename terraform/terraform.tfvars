@@ -1,10 +1,5 @@
 #Here we declare the variable values
 
-#backend access key
-backend_access_key = {
-  value = "5/pX7FiHkJeor7WCrAewhIwqouujyJVnbkJ4F6gURpunHBQ9ssVLnUJiPNcPVa8k3od55tlYouSH+AStoYBO3Q=="
-}
-
 #resource group
 resource_group = {
   location = "east us"

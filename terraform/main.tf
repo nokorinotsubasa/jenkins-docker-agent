@@ -9,13 +9,6 @@ terraform {
       version = "~>3.3.2"
     }
   }
-  backend "azurerm" {
-    resource_group_name  = "storageAccount-RG"
-    storage_account_name = "terraformbackend5167"
-    container_name       = "terraform"
-    key                  = "terraform.tfstate"
-    subscription_id      = "e27798f8-f902-4c7e-bd09-8adec2444619"
-  }
 }
 
 provider "azurerm" {

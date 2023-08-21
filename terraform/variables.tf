@@ -1,13 +1,5 @@
 #Here we define the variable name and type
 
-#backend access key
-variable "backend_access_key" {
-  type = object({
-    value = string
-  })
-  sensitive = true
-}
-
 #resource group
 variable "resource_group" {
   type = object({
