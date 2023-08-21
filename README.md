@@ -1,4 +1,4 @@
-# Docker Agent on Jenkins
+# Jenkins Docker container agent
 
 ## Introduction 
 
