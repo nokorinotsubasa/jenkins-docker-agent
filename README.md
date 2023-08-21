@@ -1,40 +1,36 @@
-# docker-agent
-Docker Agent on Jenkins
+# Docker Agent on Jenkins
 
-Introduction :
+## Introduction 
 
 Here we will learn how to spin up a Docker container as a Jenkins build agent.
-
 We will use terraform for resource deployments.
 
 Terraform will deploy all the resources required, including two Vms, one will run Jenkins on a Docker container, and the other will run the Docker agent container.
-
 Both Vms have script extensions that will run upon Vm creation.
 
-Steps
+- Steps
 
 After deploying the resources, proceed with the basic jenkins installation on the master Vm. You will need to install the Docker plugin
 
 On the agent Vm follow these steps:
 
-1. 
-
-#Please note that in this example we will use CentOS.
  
-Edit the docker.service file to open port 4243 allowing tcp connection:
 
-sudo vi usr/lib/systemd/system/docker.service
+#### Please note that in this example we will use CentOS.
+  
+- Edit the docker.service file to open port 4243 allowing tcp connection:
 
-add/edit the current line:
+`sudo vi usr/lib/systemd/system/docker.service`
 
-ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock
+modify the current line: 
 
-2. 
-Restart docker services:
+`ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock`
 
-systemctl daemon-reload
+- Restart docker services:
 
-systemctl restart docker
+`<?systemctl daemon-reload
+
+systemctl restart docker?>`
 
 You can test the connection on the agent machine:
 
