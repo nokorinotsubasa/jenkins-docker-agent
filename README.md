@@ -53,11 +53,11 @@ Test the connection and enable it, also expose DOCKER_HOST;
 
 Set the container cap;
 
-Set the "Remote File system Root" as "/home/ubuntu"
+Set the "Remote File system Root" as /home/ubuntu
 
-Add a docker template and enable it, on the docker image option set the image you want to use, in our case we will use the official jenkins agent image:
+Add a docker template and enable it, on the docker image option set the image you want to use, in our case we will use a custom docker image:
 
-jenkins/agent
+nokorinotsubasa/agent175:v5
 
 Set a label as you please. In this example we will use 'docker-agent'
 
@@ -69,7 +69,7 @@ On Host key Verification Strategy, choose "Non verifying Verification Strategy";
 
 4.
 
-That't it, now on the pipeline configuration, set the "Restrict where this build can run" to the name of the label you defined on the docker template configuration.
+That's it, now on the pipeline configuration, set the "Restrict where this build can run" to the name of the label you defined on the docker template configuration.
 
 In case of a script, set as:
 

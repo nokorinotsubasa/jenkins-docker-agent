@@ -194,18 +194,18 @@ resource "azurerm_virtual_machine_extension" "agentVm" {
 
 #Random string
 resource "random_string" "masterVm" {
-  keepers = {
-    resource_group = azurerm_resource_group.jenkins-rg.id
-  }
   length  = 4
   numeric = true
+  upper   = false
+  lower   = false
+  special = false
 }
 
 #Random string
 resource "random_string" "agentVm" {
-  keepers = {
-    resource_group = azurerm_resource_group.jenkins-rg.id
-  }
   length  = 4
   numeric = true
+  upper   = false
+  lower   = false
+  special = false
 }
