@@ -16,7 +16,9 @@ Steps
 After deploying the resources, proceed with the basic jenkins installation on the master Vm. You will need to install the Docker plugin
 
 On the agent Vm follow these steps:
+
 1. 
+
 #Please note that in this example we will use CentOS.
  
 Edit the docker.service file to open port 4243 allowing tcp connection:
