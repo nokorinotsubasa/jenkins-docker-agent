@@ -40,7 +40,7 @@ Test the connection and enable it, also expose DOCKER_HOST;
 Set the container cap;
 Set the "Remote File system Root" as "/home/ubuntu"
 Add a docker template and enable it, on the docker image option set the image you want to use, in our case we will use the official jenkins agent image:
-jenkins/agent
+jenkins/agent 
 Set a label as you please. In this example we will use 'docker-agent'
 On the connect method option choose connect with ssh;
 On credential, create an "Username and password" type of credentials(jenkins:jenkins);
