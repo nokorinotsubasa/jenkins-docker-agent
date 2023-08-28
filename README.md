@@ -8,7 +8,7 @@ Here we will learn how to spin up a Docker container as a Jenkins build agent.
 
 We will use terraform for resource deployments.
 
-Terraform will deploy all the resources required, including two Vms, one which will run Jenkins on a Docker container, and the other will run the Docker agent container.
+Terraform will deploy all the resources required, including two Vms, one which will run Jenkins on a Docker container; the other will run the Docker agent container.
 
 Both Vms have script extensions to configure basic dependencies upon creation.
 
@@ -41,7 +41,7 @@ you can test the connection using the other Vm:
 
 >`the ip was censored`
 
-- Proceed with the basic jenkins installation on the `master Vm`. You will need to install the `Docker plugin`
+- Proceed with the basic jenkins installation on the `master Vm`. You will need to install the `Docker plugin`;
 
 ![](https://github.com/nokorinotsubasa/project-docker-agent/blob/1388f56c3cfcb3e2416d5c6383ab16a9b3cc3d6c/images/JenkinsInititalSetup.png)
 
@@ -69,19 +69,21 @@ you can test the connection using the other Vm:
 
 >`nokorinotsubasa/agent175:v5`
 
-- Set the `"Remote File system Root"` as `/home/ubuntu`
+- Set the `"Remote File system Root"` as `/home/ubuntu`;
 
 ![](https://github.com/nokorinotsubasa/project-docker-agent/blob/1388f56c3cfcb3e2416d5c6383ab16a9b3cc3d6c/images/DockerAgentTemplateConfiguration.png)
 
 - On the connect method option choose connect with ssh;
 
-- On `ssh key`, select `"Use configured SSH credentials"`
+- On `ssh key`, select `"Use configured SSH credentials"`;
 
 - On credential, add an `"Username and password"` type of credentials;
 
 - Set username as `jenkins` and password as `jenkins`, this was defined on the custom docker image which will run the docker agent;
 
-- On Host key Verification Strategy, choose `"Non verifying Verification Strategy"`, this is not recommended and will be done just for demonstration. 
+- On Host key Verification Strategy, choose `"Non verifying Verification Strategy"`;
+
+>`this is not recommended and will be done just for demonstration`
 
 ![](https://github.com/nokorinotsubasa/project-docker-agent/blob/1388f56c3cfcb3e2416d5c6383ab16a9b3cc3d6c/images/DockerAgentTemplateSSHConfiguration.png)
 
@@ -101,7 +103,7 @@ In case of a `pipeline script`, set as:
 
 >`Running on docker-agent-00000kac0e5xb on docker-agent in /home/ubuntu/workspace/docker-agent-pipeline`
 
-- If you head into `Cloud statistics`, you can check some information on the agents.
+- If you head into `Cloud statistics`, you can check some information on the agents:
 
 ![](https://github.com/nokorinotsubasa/project-docker-agent/blob/1388f56c3cfcb3e2416d5c6383ab16a9b3cc3d6c/images/Jenkins%20Cloud%20Statistics.png)
 
