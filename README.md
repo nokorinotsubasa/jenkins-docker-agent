@@ -19,6 +19,7 @@ Both Vms have script extensions to configure basic dependencies upon creation.
 - On the `agentVm`, edit the `docker.service` file to open `port 4243` allowing tcp connection:
 
 `sudo vi usr/lib/systemd/system/docker.service`
+>`remember to be on the right directory`
 
 modify the current line: 
 
@@ -28,13 +29,17 @@ modify the current line:
 
 - Restart docker services:
 
-`systemctl daemon-reload`
+`sudo systemctl daemon-reload`
 
-`systemctl restart docker`
+`sudo systemctl restart docker`
 
 you can test the connection using the other Vm:
 
 `curl http://<agentvmip>:4243/version`
+
+![]()
+
+>`the ip was censored`
 
 - Proceed with the basic jenkins installation on the `master Vm`. You will need to install the `Docker plugin`
 
@@ -48,23 +53,31 @@ you can test the connection using the other Vm:
 
 ![]()
 
-`tcp://<agentvmIp>:4243`
+>`tcp://<agentvmIp>:4243`
+
+>`the ip was censored`
 
 - Test the connection and enable it, also expose `DOCKER_HOST`;
 
 - Set the container cap;
 
-- Set the "Remote File system Root" as `/home/ubuntu`
+- Now on `docker template`, add a new template;
 
-- Add a docker template and enable it, on the docker image option set the image you want to use, in our case we will use a custom docker image:
+- Set the label and name;
 
-`nokorinotsubasa/agent175:v5`
+- On the docker image option set the image you want to use, in our case we will use a custom docker image:
 
-- Set a label as you please. In this example we will use 'docker-agent'
+>`nokorinotsubasa/agent175:v5`
+
+- Set the `"Remote File system Root"` as `/home/ubuntu`
+
+![]()
 
 - On the connect method option choose connect with ssh;
 
-- On credential, create an `"Username and password"` type of credentials
+- On `ssh key`, select `"Use configured SSH credentials"`
+
+- On credential, add an `"Username and password"` type of credentials;
 
 - Set username as `jenkins` and password as `jenkins`, this was defined on the custom docker image which will run the docker agent;
 
@@ -74,14 +87,22 @@ you can test the connection using the other Vm:
 
 >`final configuration`
 
-- That's it, now on the pipeline configuration, set the `"Restrict where this build can run"` to the name of the label you defined on the docker template configuration.
-In case of a script, set as:
-
-`agent {label 'label'}`
+- That's it, now on the `freestyle pipeline` configuration, set the `"Restrict where this build can run"` with the name of the label you defined on the docker template configuration.
+In case of a `pipeline script`, set as:
+`"agent {label 'label'}"`
 
 - E.g.
 
 ![]()
 
+- As you can see, a new docker container was deployed, it was used to run the pipeline, and then was destroyed:
+
+![]()
+
+>`Running on docker-agent-00000kac0e5xb on docker-agent in /home/ubuntu/workspace/docker-agent-pipeline`
+
+- If you head into `Cloud statistics`, you can check some information on the agents.
+
+![]()
 
 Here, we defined docker to spin up a container which will be used as a `Jenkins agent`.
