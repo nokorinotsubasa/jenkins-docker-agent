@@ -69,7 +69,7 @@ resource "azurerm_subnet_network_security_group_association" "jenkins-nsg-asc" {
 
 #Public Ip Master
 resource "azurerm_public_ip" "master-ip" {
-  name                = var.public_ip.agent_ip_name
+  name                = var.public_ip.master_ip_name
   resource_group_name = azurerm_resource_group.jenkins-rg.name
   location            = azurerm_resource_group.jenkins-rg.location
   allocation_method   = var.public_ip.allocation_method
@@ -93,7 +93,7 @@ resource "azurerm_network_interface" "master_nic" {
 
 #Public Ip Agent
 resource "azurerm_public_ip" "agentip" {
-  name                = var.public_ip.master_ip_name
+  name                = var.public_ip.agentip_name
   resource_group_name = azurerm_resource_group.jenkins-rg.name
   location            = azurerm_resource_group.jenkins-rg.location
   allocation_method   = var.public_ip.allocation_method
