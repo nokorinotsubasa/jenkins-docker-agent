@@ -41,19 +41,19 @@ you can test the connection using the other Vm:
 
 >`the ip was censored`
 
-- Proceed with the basic jenkins installation on the `master Vm`. You will need to install the `Docker plugin`;
+- Proceed with the basic jenkins installation on the `master Vm`. You will need to install the `Docker plugin`:
 
 ![](https://github.com/nokorinotsubasa/project-docker-agent/blob/1388f56c3cfcb3e2416d5c6383ab16a9b3cc3d6c/images/JenkinsInititalSetup.png)
 
->`masterVm`
+>`masterVm running Jenkins master`
 
 - Head to `Manage Jenkins > Clouds`, add a new cloud of type docker;
 
 - On the docker host url, insert the agent vm url as follows:
 
-![](https://github.com/nokorinotsubasa/project-docker-agent/blob/1388f56c3cfcb3e2416d5c6383ab16a9b3cc3d6c/images/NewCloudConfiguration.png)
-
 >`tcp://<agentvmIp>:4243`
+
+![](https://github.com/nokorinotsubasa/project-docker-agent/blob/1388f56c3cfcb3e2416d5c6383ab16a9b3cc3d6c/images/NewCloudConfiguration.png)
 
 >`the ip was censored`
 
@@ -69,7 +69,7 @@ you can test the connection using the other Vm:
 
 >`nokorinotsubasa/agent175:v5`
 
-- Set the `"Remote File system Root"` as `/home/ubuntu`;
+- Set the `"Remote File system Root"` as `/home/ubuntu`:
 
 ![](https://github.com/nokorinotsubasa/project-docker-agent/blob/1388f56c3cfcb3e2416d5c6383ab16a9b3cc3d6c/images/DockerAgentTemplateConfiguration.png)
 
