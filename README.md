@@ -4,7 +4,7 @@
 
 Here we will learn how to spin up a Docker container as a Jenkins build agent.
 
-![]()
+![](https://github.com/nokorinotsubasa/project-docker-agent/blob/050dc2e6a00b62220efd1295556cbdd45d68486a/images/Architecture.png)
 
 We will use terraform for resource deployments.
 
