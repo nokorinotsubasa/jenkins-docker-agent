@@ -16,16 +16,16 @@ Both Vms have script extensions to configure basic dependencies upon creation.
 
 - Deploy the resources using terraform.
 
-- On the `agentVm`, edit the `docker.service` file to open `port 4243` allowing tcp connection:
+- On the `agentVm`, edit the `docker.service` file to open `port 4243` allowing tcp connection: `remember to be on the right directory`
 
 `sudo vi usr/lib/systemd/system/docker.service`
->`remember to be on the right directory`
 
 modify the current line: 
 
+>`ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock`
+
 ![](https://github.com/nokorinotsubasa/project-docker-agent/blob/1388f56c3cfcb3e2416d5c6383ab16a9b3cc3d6c/images/dockerserviceModification.png)
 
->`ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:4243 -H unix:///var/run/docker.sock`
 
 - Restart docker services:
 
