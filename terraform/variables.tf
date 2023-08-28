@@ -109,7 +109,6 @@ variable "source_image_reference" {
 variable "vm_secrets" {
   type = object({
     admin_username = string
-    admin_password = string
   })
   sensitive = true
 }

@@ -123,7 +123,7 @@ resource "azurerm_linux_virtual_machine" "masterVm" {
   eviction_policy                 = var.virtual_machines.eviction_policy
   max_bid_price                   = var.virtual_machines.max_bid_price
   admin_username                  = var.vm_secrets.admin_username
-  admin_password                  = var.vm_secrets.admin_password
+  admin_password                  = random_password.masterpassword.result
   disable_password_authentication = false
   network_interface_ids = [
     azurerm_network_interface.master_nic.id,
@@ -162,7 +162,7 @@ resource "azurerm_linux_virtual_machine" "agentVm2" {
   eviction_policy                 = var.virtual_machines.eviction_policy
   max_bid_price                   = var.virtual_machines.max_bid_price
   admin_username                  = var.vm_secrets.admin_username
-  admin_password                  = var.vm_secrets.admin_password
+  admin_password                  = random_password.agentpassword.result
   disable_password_authentication = false
   network_interface_ids = [
     azurerm_network_interface.agentnic.id,
@@ -208,4 +208,16 @@ resource "random_string" "agentVm" {
   upper   = false
   lower   = false
   special = false
+}
+
+resource "random_password" "masterpassword" {
+  length           = 16
+  special          = true
+  override_special = "!#$%&*()-_=+[]{}<>:?"
+}
+
+resource "random_password" "agentpassword" {
+  length           = 16
+  special          = true
+  override_special = "!#$%&*()-_=+[]{}<>:?"
 }

@@ -81,7 +81,6 @@ source_image_reference = {
 #vms secrets
 vm_secrets = {
   admin_username = "centusr"
-  admin_password = "jeannedarc168.456"
 }
 
 #vms extension
