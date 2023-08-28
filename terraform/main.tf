@@ -211,13 +211,17 @@ resource "random_string" "agentVm" {
 }
 
 resource "random_password" "masterpassword" {
-  length           = 16
-  special          = true
-  override_special = "!#$%&*()-_=+[]{}<>:?"
+  length  = 16
+  special = false
+  numeric = true
+  upper   = true
+  lower   = true
 }
 
 resource "random_password" "agentpassword" {
-  length           = 16
-  special          = true
-  override_special = "!#$%&*()-_=+[]{}<>:?"
+  length  = 16
+  special = false
+  numeric = true
+  upper   = true
+  lower   = true
 }
