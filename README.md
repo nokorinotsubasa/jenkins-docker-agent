@@ -66,8 +66,7 @@ you can test the connection using the other Vm:
 - Set the label and name;
 
 - On the docker image option set the image you want to use, in our case we will use a custom docker image:
-
->`nokorinotsubasa/agent175:v5`
+`nokorinotsubasa/agent175:v5`
 
 - Set the `"Remote File system Root"` as `/home/ubuntu`:
 
