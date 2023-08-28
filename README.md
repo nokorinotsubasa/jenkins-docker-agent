@@ -12,6 +12,8 @@ Terraform will deploy all the resources required, including two Vms, one which w
 
 Both Vms have script extensions to configure basic dependencies upon creation.
 
+The Docker agent container will use a custom Docker image; the dockerfile can be found in this repository.
+
 ### Steps
 
 - Deploy the resources using terraform.
