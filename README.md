@@ -14,7 +14,16 @@ Both Vms have script extensions to configure basic dependencies upon creation.
 
 The Docker agent container will use a custom Docker image; the dockerfile can be found in this repository.
 
-### Steps
+## Notes about terraform
+
+- Don't forget to change `terraform.tfvars` to set vm admin username, storage account key etc;
+
+- The Virtual machines password will NOT be on the output, instead they can be securely found in the `terraform.tfstate` file; the sql server password will also be there.
+
+
+## Steps
+
+>`In this example, we will backup to an Azure Storage Account`
 
 - Deploy the resources using terraform.
 
